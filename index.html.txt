@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MotoLiv — Livraison rapide à Yaoundé</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --orange: #FF5B00;
+    --orange2: #FF8C00;
+    --dark: #0E0E0E;
+    --card: #181818;
+    --card2: #222;
+    --text: #F0EDE8;
+    --muted: #888;
+    --green: #00D26A;
+    --red: #FF3D3D;
+    --yellow: #FFD600;
+    --border: #2A2A2A;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+  }
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+display: flex; align-items: center; justify-content: space-between;
+padding: 0 40px;
+height: 68px;
+background: rgba(14,14,14,0.92);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(–border);
+}
+.logo {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 28px;
+color: var(–orange);
+letter-spacing: 2px;
+}
+.logo span { color: var(–text); }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+color: var(–muted); text-decoration: none;
+font-size: 14px; font-weight: 600; letter-spacing: 0.5px;
+transition: color .2s;
+}
+.nav-links a:hover { color: var(–orange); }
+.nav-cta {
+background: var(–orange); color: #fff; border: none;
+padding: 10px 24px; border-radius: 8px;
+font-family: ‘Outfit’, sans-serif; font-weight: 700; font-size: 14px;
+cursor: pointer; transition: background .2s;
+}
+.nav-cta:hover { background: var(–orange2); }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+display: flex; align-items: center;
+padding: 100px 40px 60px;
+position: relative;
+overflow: hidden;
+}
+.hero-bg {
+position: absolute; inset: 0; z-index: 0;
+background: radial-gradient(ellipse 70% 60% at 70% 50%, #FF5B0015 0%, transparent 70%),
+radial-gradient(ellipse 40% 40% at 20% 80%, #FF8C0010 0%, transparent 60%);
+}
+.hero-grid {
+position: absolute; inset: 0; z-index: 0;
+background-image: linear-gradient(var(–border) 1px, transparent 1px),
+linear-gradient(90deg, var(–border) 1px, transparent 1px);
+background-size: 60px 60px;
+opacity: 0.4;
+}
+.hero-content { position: relative; z-index: 1; max-width: 640px; }
+.hero-tag {
+display: inline-flex; align-items: center; gap: 8px;
+background: var(–orange)18; border: 1px solid var(–orange)44;
+color: var(–orange); padding: 6px 16px; border-radius: 20px;
+font-size: 13px; font-weight: 700; letter-spacing: 1px;
+margin-bottom: 28px;
+animation: fadeUp .6s ease both;
+}
+.hero h1 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(60px, 8vw, 100px);
+line-height: 0.95;
+color: var(–text);
+margin-bottom: 24px;
+animation: fadeUp .6s .1s ease both;
+}
+.hero h1 em { color: var(–orange); font-style: normal; }
+.hero p {
+font-size: 18px; color: var(–muted); line-height: 1.7;
+margin-bottom: 36px; font-weight: 300;
+animation: fadeUp .6s .2s ease both;
+}
+.hero-btns {
+display: flex; gap: 14px; flex-wrap: wrap;
+animation: fadeUp .6s .3s ease both;
+}
+.btn-primary {
+background: var(–orange); color: #fff;
+padding: 16px 32px; border-radius: 10px; border: none;
+font-family: ‘Outfit’, sans-serif; font-weight: 800; font-size: 16px;
+cursor: pointer; transition: all .2s; letter-spacing: 0.5px;
+}
+.btn-primary:hover { background: var(–orange2); transform: translateY(-2px); box-shadow: 0 8px 24px #FF5B0044; }
+.btn-outline {
+background: transparent; color: var(–text);
+padding: 16px 32px; border-radius: 10px;
+border: 1px solid var(–border);
+font-family: ‘Outfit’, sans-serif; font-weight: 700; font-size: 16px;
+cursor: pointer; transition: all .2s;
+}
+.btn-outline:hover { border-color: var(–orange); color: var(–orange); }
+
+.hero-visual {
+position: absolute; right: 40px; top: 50%; transform: translateY(-50%);
+z-index: 1;
+animation: fadeUp .8s .2s ease both;
+}
+.phone-mock {
+width: 300px;
+background: var(–card);
+border-radius: 36px;
+border: 2px solid var(–border);
+overflow: hidden;
+box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px #333;
+}
+.phone-header {
+background: var(–card); padding: 16px 20px 10px;
+border-bottom: 1px solid var(–border);
+display: flex; align-items: center; justify-content: space-between;
+}
+.phone-logo { font-family: ‘Bebas Neue’, sans-serif; color: var(–orange); font-size: 20px; letter-spacing: 1px; }
+.online-dot { width: 8px; height: 8px; border-radius: 50%; background: var(–green); box-shadow: 0 0 6px var(–green); }
+.phone-body { padding: 16px; }
+.order-card {
+background: var(–card2); border-radius: 12px; padding: 14px; margin-bottom: 10px;
+border: 1px solid var(–border);
+}
+.order-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.order-id { font-weight: 800; color: var(–orange); font-size: 13px; }
+.badge {
+padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
+}
+.badge-green { background: #00D26A22; color: var(–green); }
+.badge-orange { background: #FF5B0022; color: var(–orange); }
+.badge-yellow { background: #FFD60022; color: var(–yellow); }
+.order-info { font-size: 12px; color: var(–muted); line-height: 1.6; }
+.order-amount { font-weight: 800; color: var(–text); margin-top: 6px; font-size: 15px; }
+.stats-row { display: flex; gap: 8px; margin-top: 10px; }
+.stat-box {
+flex: 1; background: var(–card2); border-radius: 10px; padding: 10px;
+text-align: center; border: 1px solid var(–border);
+}
+.stat-val { font-weight: 800; font-size: 18px; color: var(–orange); }
+.stat-lbl { font-size: 10px; color: var(–muted); margin-top: 2px; }
+
+/* ── STATS BAR ── */
+.stats-bar {
+background: var(–card);
+border-top: 1px solid var(–border);
+border-bottom: 1px solid var(–border);
+padding: 28px 40px;
+display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;
+}
+.stats-bar .item { text-align: center; }
+.stats-bar .num {
+font-family: ‘Bebas Neue’, sans-serif; font-size: 48px; color: var(–orange);
+line-height: 1;
+}
+.stats-bar .lbl { font-size: 13px; color: var(–muted); font-weight: 600; letter-spacing: 0.5px; }
+
+/* ── HOW IT WORKS ── */
+.section { padding: 80px 40px; }
+.section-tag {
+display: inline-block; color: var(–orange); font-weight: 700;
+font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px;
+}
+.section h2 {
+font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(36px, 5vw, 60px);
+line-height: 1; margin-bottom: 48px;
+}
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.step-card {
+background: var(–card); border: 1px solid var(–border); border-radius: 16px;
+padding: 28px 24px; position: relative; overflow: hidden;
+transition: border-color .3s, transform .3s;
+}
+.step-card:hover { border-color: var(–orange); transform: translateY(-4px); }
+.step-num {
+font-family: ‘Bebas Neue’, sans-serif; font-size: 80px; color: var(–orange);
+opacity: 0.08; position: absolute; top: -10px; right: 14px; line-height: 1;
+}
+.step-icon { font-size: 36px; margin-bottom: 14px; }
+.step-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.step-card p { font-size: 14px; color: var(–muted); line-height: 1.6; }
+
+/* ── ROLES ── */
+.roles-section { padding: 0 40px 80px; }
+.roles-tabs {
+display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap;
+}
+.role-tab {
+padding: 10px 24px; border-radius: 8px; border: 1px solid var(–border);
+background: transparent; color: var(–muted); font-family: ‘Outfit’, sans-serif;
+font-weight: 700; font-size: 14px; cursor: pointer; transition: all .2s;
+}
+.role-tab.active { background: var(–orange); border-color: var(–orange); color: #fff; }
+.role-content { display: none; }
+.role-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+
+/* ── APP DEMO ── */
+.demo-wrap {
+background: var(–card); border: 1px solid var(–border); border-radius: 20px;
+padding: 24px; min-height: 400px;
+}
+.demo-title { font-weight: 800; font-size: 18px; margin-bottom: 16px; color: var(–orange); }
+
+/* Client demo */
+.resto-list { display: flex; flex-direction: column; gap: 10px; }
+.resto-item {
+background: var(–card2); border-radius: 12px; padding: 14px 16px;
+display: flex; align-items: center; gap: 14px; cursor: pointer;
+border: 1px solid var(–border); transition: border-color .2s;
+}
+.resto-item:hover { border-color: var(–orange); }
+.resto-emoji { font-size: 32px; }
+.resto-info { flex: 1; }
+.resto-name { font-weight: 700; font-size: 15px; }
+.resto-sub { font-size: 12px; color: var(–muted); margin-top: 2px; }
+.resto-arrow { color: var(–orange); font-size: 20px; }
+
+/* Menu */
+.menu-grid { display: flex; flex-direction: column; gap: 8px; }
+.menu-item {
+background: var(–card2); border-radius: 10px; padding: 12px 14px;
+display: flex; align-items: center; gap: 12; border: 1px solid var(–border);
+}
+.menu-emoji { font-size: 26px; margin-right: 12px; }
+.menu-name { font-weight: 600; flex: 1; }
+.menu-price { color: var(–orange); font-weight: 700; margin-right: 10px; }
+.btn-add {
+background: var(–orange); color: #fff; border: none; border-radius: 8px;
+padding: 6px 14px; font-weight: 700; cursor: pointer; font-size: 14px;
+transition: background .2s;
+}
+.btn-add:hover { background: var(–orange2); }
+.btn-add.added { background: var(–green); }
+
+/* Cart */
+.cart-summary {
+background: var(–card2); border: 1px solid var(–border); border-radius: 14px; padding: 16px;
+margin-top: 16px;
+}
+.cart-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
+.cart-total { font-weight: 800; font-size: 17px; border-top: 1px solid var(–border); padding-top: 10px; margin-top: 6px; }
+.cart-total span { color: var(–orange); }
+.pay-btns { display: flex; gap: 8px; margin-top: 12px; }
+.pay-btn {
+flex: 1; padding: 10px; border-radius: 8px; border: 1.5px solid var(–orange);
+background: transparent; color: var(–text); font-weight: 700; cursor: pointer;
+font-family: ‘Outfit’, sans-serif; font-size: 13px; transition: all .2s;
+}
+.pay-btn:hover { background: var(–orange); }
+.order-btn {
+width: 100%; margin-top: 10px; padding: 14px; background: var(–orange);
+color: #fff; border: none; border-radius: 10px; font-family: ‘Outfit’, sans-serif;
+font-weight: 800; font-size: 16px; cursor: pointer; letter-spacing: 0.5px;
+transition: all .2s;
+}
+.order-btn:hover { background: var(–orange2); transform: translateY(-1px); }
+
+/* Livreur demo */
+.livreur-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.lstat { background: var(–card2); border-radius: 10px; padding: 12px; text-align: center; border: 1px solid var(–border); }
+.lstat-val { font-family: ‘Bebas Neue’, sans-serif; font-size: 28px; color: var(–orange); }
+.lstat-lbl { font-size: 11px; color: var(–muted); }
+.mission-card {
+background: var(–card2); border: 1px solid #FF5B0033; border-radius: 14px; padding: 18px;
+}
+.mission-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.mission-step { font-size: 24px; }
+.mission-info { flex: 1; }
+.mission-label { font-weight: 700; font-size: 15px; }
+.mission-sub { font-size: 12px; color: var(–muted); }
+.route-box {
+background: var(–dark); border-radius: 10px; padding: 14px; margin-bottom: 14px;
+border: 1px solid var(–border);
+}
+.route-row { font-size: 13px; padding: 4px 0; }
+.route-row .label { color: var(–muted); font-size: 11px; }
+.gain-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.gain-amount { font-family: ‘Bebas Neue’, sans-serif; font-size: 36px; color: var(–green); }
+.action-btn {
+width: 100%; padding: 14px; border-radius: 10px; border: none;
+font-family: ‘Outfit’, sans-serif; font-weight: 800; font-size: 15px;
+cursor: pointer; transition: all .2s;
+}
+.action-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* Restaurant demo */
+.resto-orders { display: flex; flex-direction: column; gap: 12px; }
+.order-full {
+background: var(–card2); border-radius: 14px; padding: 16px;
+border: 1px solid var(–border);
+}
+.order-full-top { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center; }
+.order-full-id { font-weight: 800; color: var(–orange); }
+.order-full-body { font-size: 13px; color: var(–muted); line-height: 1.8; margin-bottom: 12px; }
+.order-full-price { font-weight: 800; font-size: 16px; color: var(–text); margin-bottom: 12px; }
+.order-actions { display: flex; gap: 8px; }
+.btn-accept {
+flex: 1; padding: 10px; border-radius: 8px; border: none;
+font-family: ‘Outfit’, sans-serif; font-weight: 700; font-size: 13px; cursor: pointer; transition: all .2s;
+}
+
+/* ── PAYMENT ── */
+.payment-section { padding: 0 40px 80px; }
+.payment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.payment-card {
+background: var(–card); border: 1px solid var(–border); border-radius: 16px; padding: 28px 24px;
+transition: all .3s;
+}
+.payment-card:hover { border-color: var(–orange); transform: translateY(-4px); }
+.payment-logo { font-size: 40px; margin-bottom: 14px; }
+.payment-name { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+.payment-desc { font-size: 14px; color: var(–muted); line-height: 1.6; }
+.payment-flow {
+margin-top: 14px; background: var(–card2); border-radius: 10px; padding: 12px;
+font-size: 12px; color: var(–muted);
+}
+.payment-flow strong { color: var(–orange); }
+
+/* ── FOOTER ── */
+footer {
+background: var(–card); border-top: 1px solid var(–border);
+padding: 40px; text-align: center;
+}
+.footer-logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 36px; color: var(–orange); letter-spacing: 2px; }
+.footer-sub { color: var(–muted); font-size: 14px; margin-top: 8px; }
+.footer-links { display: flex; justify-content: center; gap: 32px; margin-top: 20px; flex-wrap: wrap; }
+.footer-links a { color: var(–muted); text-decoration: none; font-size: 13px; transition: color .2s; }
+.footer-links a:hover { color: var(–orange); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(24px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.06); }
+}
+@keyframes float {
+0%, 100% { transform: translateY(-50%) translateX(0); }
+50% { transform: translateY(-52%) translateX(-6px); }
+}
+.hero-visual { animation: float 4s ease-in-out infinite !important; }
+
+/* ── NOTIFICATION TOAST ── */
+#toast {
+position: fixed; bottom: 28px; right: 28px; z-index: 999;
+background: var(–green); color: #fff;
+padding: 14px 22px; border-radius: 12px;
+font-weight: 700; font-size: 15px;
+opacity: 0; transform: translateY(20px);
+transition: all .35s; pointer-events: none;
+box-shadow: 0 8px 24px rgba(0,210,106,0.3);
+}
+#toast.show { opacity: 1; transform: translateY(0); }
+
+/* Responsive */
+@media (max-width: 900px) {
+.hero-visual { display: none; }
+.role-content.active { grid-template-columns: 1fr; }
+nav { padding: 0 20px; }
+.nav-links { display: none; }
+.section, .roles-section, .payment-section { padding-left: 20px; padding-right: 20px; }
+.stats-bar { padding: 24px 20px; }
+footer { padding: 32px 20px; }
+.hero { padding: 100px 20px 60px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <div class="logo">Moto<span>Liv</span></div>
+  <div class="nav-links">
+    <a href="#comment">Comment ça marche</a>
+    <a href="#roles">Les acteurs</a>
+    <a href="#paiement">Paiement</a>
+  </div>
+  <button class="nav-cta" onclick="showToast('🚀 Bientôt disponible ! Laissez votre contact.')">Rejoindre la bêta</button>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🏍️ &nbsp;Yaoundé · Cameroun</div>
+    <h1>Livraison<br/><em>Express</em><br/>en Moto</h1>
+    <p>Connectez restaurants, bendskins et clients. Commandez votre repas en quelques clics, payez par Orange Money ou MTN Money, et soyez livré en un temps record.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="scrollToSection('comment')">Découvrir →</button>
+      <button class="btn-outline" onclick="scrollToSection('roles')">Voir la démo</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="phone-mock">
+      <div class="phone-header">
+        <div class="phone-logo">🏍️ MotoLiv</div>
+        <div class="online-dot"></div>
+      </div>
+      <div class="phone-body">
+        <div class="order-card">
+          <div class="order-top">
+            <div class="order-id">#047</div>
+            <div class="badge badge-green">✅ Livré</div>
+          </div>
+          <div class="order-info">
+            👤 Marie K. — Bastos<br/>
+            🛒 Ndolé + Poulet DG
+          </div>
+          <div class="order-amount">6 000 FCFA</div>
+        </div>
+        <div class="order-card">
+          <div class="order-top">
+            <div class="order-id">#048</div>
+            <div class="badge badge-orange">🏍️ En route</div>
+          </div>
+          <div class="order-info">
+            👤 Paul N. — Mvog-Mbi<br/>
+            🛒 Eru + Fufu ×2
+          </div>
+          <div class="order-amount">4 400 FCFA</div>
+        </div>
+        <div class="order-card">
+          <div class="order-top">
+            <div class="order-id">#049</div>
+            <div class="badge badge-yellow">⏳ Préparation</div>
+          </div>
+          <div class="order-info">
+            👤 Sonia B. — Melen<br/>
+            🛒 Pizza Pepperoni ×1
+          </div>
+          <div class="order-amount">3 500 FCFA</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-val">12</div><div class="stat-lbl">Courses</div></div>
+          <div class="stat-box"><div class="stat-val" style="color:var(--green)">6k</div><div class="stat-lbl">FCFA/j</div></div>
+          <div class="stat-box"><div class="stat-val" style="color:var(--yellow)">4.9⭐</div><div class="stat-lbl">Note</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+
+<div class="stats-bar">
+  <div class="item"><div class="num">500+</div><div class="lbl">Livreurs actifs</div></div>
+  <div class="item"><div class="num">120+</div><div class="lbl">Restaurants partenaires</div></div>
+  <div class="item"><div class="num">25min</div><div class="lbl">Délai moyen</div></div>
+  <div class="item"><div class="num">10%</div><div class="lbl">Commission plateforme</div></div>
+</div>
+
+<!-- HOW IT WORKS -->
+
+<section class="section" id="comment">
+  <div class="section-tag">● Comment ça marche</div>
+  <h2>Simple.<br/>Rapide.<br/>Rentable.</h2>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-icon">📱</div>
+      <h3>Le client commande</h3>
+      <p>Il choisit son restaurant sur l'app, compose son panier et passe commande en quelques secondes.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-icon">🍳</div>
+      <h3>Le restaurant prépare</h3>
+      <p>Il reçoit la commande sur son tableau de bord et démarre la préparation immédiatement.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-icon">🏍️</div>
+      <h3>Le bendskin est appelé</h3>
+      <p>Un livreur disponible à proximité accepte la course et fonce au restaurant récupérer la commande.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-icon">🎉</div>
+      <h3>Livraison + Paiement</h3>
+      <p>Le client reçoit son repas. Le livreur est payé automatiquement via Orange Money ou MTN Money.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES DEMO -->
+
+<section class="roles-section" id="roles">
+  <div class="section-tag">● Les acteurs</div>
+  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,60px);margin-bottom:28px;">3 Interfaces.<br/>1 Écosystème.</h2>
+
+  <div class="roles-tabs">
+    <button class="role-tab active" onclick="switchRole('client')">👤 Client</button>
+    <button class="role-tab" onclick="switchRole('restaurant')">🍽️ Restaurant</button>
+    <button class="role-tab" onclick="switchRole('livreur')">🏍️ Livreur</button>
+  </div>
+
+  <!-- CLIENT -->
+
+  <div class="role-content active" id="rc-client">
+    <div>
+      <h3 style="font-size:24px;font-weight:800;margin-bottom:10px;">L'expérience Client</h3>
+      <p style="color:var(--muted);line-height:1.7;margin-bottom:20px;">Parcourez les restaurants de Yaoundé, composez votre commande et suivez votre livreur en temps réel. Paiement 100% mobile.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Catalogue de restaurants avec menus et prix</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Suivi GPS de la livraison en direct</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Paiement Orange Money & MTN Money</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Historique des commandes et favoris</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Notes et avis sur les livreurs</span></li>
+      </ul>
+    </div>
+    <div class="demo-wrap">
+      <div id="client-home">
+        <div class="demo-title">🍽️ Restaurants près de vous</div>
+        <div class="resto-list">
+          <div class="resto-item" onclick="openMenu('Chez Mama Africa','🍲')">
+            <div class="resto-emoji">🍲</div>
+            <div class="resto-info">
+              <div class="resto-name">Chez Mama Africa</div>
+              <div class="resto-sub">Camerounais · ⭐ 4.8 · 🕐 20-30 min</div>
+            </div>
+            <div class="resto-arrow">›</div>
+          </div>
+          <div class="resto-item" onclick="openMenu('Le Grill du Centre','🥩')">
+            <div class="resto-emoji">🥩</div>
+            <div class="resto-info">
+              <div class="resto-name">Le Grill du Centre</div>
+              <div class="resto-sub">Grillades · ⭐ 4.5 · 🕐 25-35 min</div>
+            </div>
+            <div class="resto-arrow">›</div>
+          </div>
+          <div class="resto-item" onclick="openMenu('Pizza Yaoundé','🍕')">
+            <div class="resto-emoji">🍕</div>
+            <div class="resto-info">
+              <div class="resto-name">Pizza Yaoundé</div>
+              <div class="resto-sub">Fast-food · ⭐ 4.3 · 🕐 15-25 min</div>
+            </div>
+            <div class="resto-arrow">›</div>
+          </div>
+        </div>
+      </div>
+      <div id="client-menu" style="display:none">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <button onclick="backToHome()" style="background:none;border:none;color:var(--orange);cursor:pointer;font-size:13px;font-weight:700">← Retour</button>
+          <span id="menu-title" style="font-weight:800;font-size:16px"></span>
+        </div>
+        <div class="menu-grid" id="menu-items"></div>
+        <div id="cart-box" style="display:none">
+          <div class="cart-summary">
+            <div id="cart-rows"></div>
+            <div class="cart-total" id="cart-total"></div>
+            <div class="pay-btns">
+              <button class="pay-btn">🟠 Orange Money</button>
+              <button class="pay-btn">🟡 MTN Money</button>
+            </div>
+            <button class="order-btn" onclick="placeOrder()">🏍️ Commander maintenant</button>
+          </div>
+        </div>
+      </div>
+      <div id="client-tracking" style="display:none">
+        <div class="demo-title">📍 Suivi en direct</div>
+        <div id="track-steps" style="display:flex;flex-direction:column;gap:0"></div>
+        <div id="livreur-info" style="display:none;margin-top:16px;background:var(--card2);border-radius:12px;padding:14px;border:1px solid var(--border)">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:8px">VOTRE LIVREUR</div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="font-size:28px">🏍️</span>
+            <div style="flex:1"><div style="font-weight:700">Jean-Paul M.</div><div style="font-size:12px;color:var(--muted)">Honda CB125 · ⭐ 4.9</div></div>
+            <button style="background:var(--green);border:none;border-radius:8px;padding:8px 14px;color:#fff;font-weight:700;cursor:pointer">📞</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESTAURANT -->
+
+  <div class="role-content" id="rc-restaurant">
+    <div>
+      <h3 style="font-size:24px;font-weight:800;margin-bottom:10px;">Le tableau de bord Restaurant</h3>
+      <p style="color:var(--muted);line-height:1.7;margin-bottom:20px;">Gérez vos commandes entrantes, suivez leur avancement et appelez un livreur dès que le plat est prêt.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Réception des commandes en temps réel</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Gestion du statut de chaque commande</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Appel automatique du livreur disponible</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Statistiques de ventes quotidiennes</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Gestion du menu et des disponibilités</span></li>
+      </ul>
+    </div>
+    <div class="demo-wrap">
+      <div class="demo-title">📋 Commandes actives</div>
+      <div class="resto-orders">
+        <div class="order-full" id="ord-001">
+          <div class="order-full-top">
+            <div class="order-full-id">#001</div>
+            <div class="badge badge-yellow" id="status-001">⏳ En attente</div>
+          </div>
+          <div class="order-full-body">
+            👤 Marie K. — Bastos, Avenue Kennedy<br/>
+            🛒 Ndolé complet + Poulet DG
+          </div>
+          <div class="order-full-price">6 000 FCFA</div>
+          <div class="order-actions" id="actions-001">
+            <button class="btn-accept" style="background:var(--orange);color:#fff" onclick="acceptOrder('001')">✅ Accepter</button>
+            <button class="btn-accept" style="background:var(--card);border:1px solid var(--border);color:var(--muted)" onclick="declineOrder('001')">✗ Refuser</button>
+          </div>
+        </div>
+        <div class="order-full" id="ord-002">
+          <div class="order-full-top">
+            <div class="order-full-id">#002</div>
+            <div class="badge badge-yellow" id="status-002">⏳ En attente</div>
+          </div>
+          <div class="order-full-body">
+            👤 Paul N. — Mvog-Mbi<br/>
+            🛒 Spaghetti sauté ×2
+          </div>
+          <div class="order-full-price">3 600 FCFA</div>
+          <div class="order-actions" id="actions-002">
+            <button class="btn-accept" style="background:var(--orange);color:#fff" onclick="acceptOrder('002')">✅ Accepter</button>
+            <button class="btn-accept" style="background:var(--card);border:1px solid var(--border);color:var(--muted)" onclick="declineOrder('002')">✗ Refuser</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVREUR -->
+
+  <div class="role-content" id="rc-livreur">
+    <div>
+      <h3 style="font-size:24px;font-weight:800;margin-bottom:10px;">L'app du Livreur Bendskin</h3>
+      <p style="color:var(--muted);line-height:1.7;margin-bottom:20px;">Acceptez des courses, suivez votre itinéraire et encaissez vos gains directement sur votre compte mobile money.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Réception des missions en temps réel</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Itinéraire GPS vers le restaurant et client</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Paiement automatique à chaque livraison</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Tableau de bord de gains quotidiens</span></li>
+        <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--green);margin-top:2px">✓</span><span>Système de notation et badges de fiabilité</span></li>
+      </ul>
+    </div>
+    <div class="demo-wrap">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:28px">🏍️</span>
+          <div><div style="font-weight:700">Jean-Paul M.</div><div style="font-size:12px;color:var(--muted)">Honda CB125</div></div>
+        </div>
+        <button id="toggle-online" onclick="toggleOnline()" style="background:var(--green)22;border:1px solid var(--green);color:var(--green);padding:8px 14px;border-radius:20px;font-weight:700;cursor:pointer;font-size:13px">● En ligne</button>
+      </div>
+      <div class="livreur-stats">
+        <div class="lstat"><div class="lstat-val" id="lv-gains">4 500</div><div class="lstat-lbl">FCFA</div></div>
+        <div class="lstat"><div class="lstat-val" id="lv-courses">9</div><div class="lstat-lbl">Courses</div></div>
+        <div class="lstat"><div class="lstat-val" style="color:var(--yellow)">4.9⭐</div><div class="lstat-lbl">Note</div></div>
+      </div>
+      <div class="mission-card" id="mission-box">
+        <div class="mission-header">
+          <div class="mission-step" id="m-icon">🏍️</div>
+          <div class="mission-info">
+            <div class="mission-label" id="m-label">En route vers le restaurant</div>
+            <div class="mission-sub">Mission #001 · Chez Mama Africa</div>
+          </div>
+        </div>
+        <div class="route-box">
+          <div class="route-row"><div class="label">🍽️ RESTAURANT</div>Chez Mama Africa — Centre-ville</div>
+          <div style="border-top:1px solid var(--border);margin:8px 0"></div>
+          <div class="route-row"><div class="label">👤 CLIENT</div>Marie K. — Bastos, Kennedy</div>
+        </div>
+        <div class="gain-row">
+          <div><div style="font-size:11px;color:var(--muted)">Votre gain</div><div class="gain-amount" id="m-gain">500 FCFA</div></div>
+          <div style="text-align:right"><div style="font-size:11px;color:var(--muted)">Distance</div><div style="font-weight:700;font-size:20px">3.2 km</div></div>
+        </div>
+        <button class="action-btn" id="m-btn" onclick="nextMissionStep()" style="background:var(--orange);color:#fff">Je suis arrivé au restaurant</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+
+<section class="payment-section" id="paiement">
+  <div class="section-tag">● Paiement intégré</div>
+  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,60px);margin-bottom:36px;">Paiement<br/>100% Mobile</h2>
+  <div class="payment-grid">
+    <div class="payment-card">
+      <div class="payment-logo">🟠</div>
+      <div class="payment-name">Orange Money</div>
+      <div class="payment-desc">Le leader au Cameroun. Paiement instantané depuis le numéro Orange du client vers le livreur.</div>
+      <div class="payment-flow">
+        <strong>Flux :</strong> Client → Plateforme (10%) → Livreur (90%) — en temps réel
+      </div>
+    </div>
+    <div class="payment-card">
+      <div class="payment-logo">🟡</div>
+      <div class="payment-name">MTN Mobile Money</div>
+      <div class="payment-desc">Intégration API MTN MoMo pour les abonnés MTN. Même rapidité, même sécurité.</div>
+      <div class="payment-flow">
+        <strong>Flux :</strong> Client → Plateforme (10%) → Livreur (90%) — en temps réel
+      </div>
+    </div>
+    <div class="payment-card">
+      <div class="payment-logo">💸</div>
+      <div class="payment-name">Commission automatique</div>
+      <div class="payment-desc">La plateforme prélève 10% sur chaque commande. Le livreur reçoit son gain immédiatement après livraison.</div>
+      <div class="payment-flow">
+        <strong>Exemple :</strong> Commande 5 000 FCFA → Plateforme <strong>500 FCFA</strong> → Livreur <strong>500 FCFA</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-logo">🏍️ MotoLiv</div>
+  <div class="footer-sub">Livraison rapide à Yaoundé — Cameroun</div>
+  <div class="footer-links">
+    <a href="#">Restaurants</a>
+    <a href="#">Devenir livreur</a>
+    <a href="#">Contact</a>
+    <a href="#">Mentions légales</a>
+  </div>
+  <div style="margin-top:24px;font-size:12px;color:#444">© 2025 MotoLiv · Tous droits réservés</div>
+</footer>
+
+<!-- TOAST -->
+
+<div id="toast">✅ Action effectuée !</div>
+
+<script>
+// ── UTILS ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── ROLES ──
+function switchRole(role) {
+  document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.role-content').forEach(c => c.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('rc-' + role).classList.add('active');
+}
+
+// ── CLIENT DEMO ──
+const menu = [
+  { id:1, name:"Ndolé complet", price:2500, emoji:"🍲" },
+  { id:2, name:"Poulet DG", price:3500, emoji:"🍗" },
+  { id:3, name:"Spaghetti sauté", price:1800, emoji:"🍝" },
+  { id:4, name:"Eru + Fufu", price:2200, emoji:"🫕" },
+];
+let cart = {};
+let currentResto = '';
+
+function openMenu(name, emoji) {
+  currentResto = name;
+  document.getElementById('client-home').style.display = 'none';
+  document.getElementById('client-menu').style.display = 'block';
+  document.getElementById('menu-title').textContent = emoji + ' ' + name;
+  renderMenu();
+}
+function backToHome() {
+  document.getElementById('client-home').style.display = 'block';
+  document.getElementById('client-menu').style.display = 'none';
+  document.getElementById('client-tracking').style.display = 'none';
+}
+function renderMenu() {
+  const el = document.getElementById('menu-items');
+  el.innerHTML = menu.map(item => {
+    const qty = cart[item.id] || 0;
+    return `<div class="menu-item" style="display:flex;align-items:center;padding:12px 14px;background:var(--card2);border-radius:10px;border:1px solid var(--border);margin-bottom:8px">
+      <span class="menu-emoji">${item.emoji}</span>
+      <span class="menu-name">${item.name}</span>
+      <span class="menu-price">${item.price.toLocaleString()} F</span>
+      <button class="btn-add ${qty>0?'added':''}" onclick="addItem(${item.id})">${qty>0?'✓'+qty:'+'}</button>
+    </div>`;
+  }).join('');
+  renderCart();
+}
+function addItem(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  renderMenu();
+}
+function renderCart() {
+  const items = menu.filter(m => cart[m.id]);
+  const box = document.getElementById('cart-box');
+  if (!items.length) { box.style.display='none'; return; }
+  box.style.display = 'block';
+  const rows = document.getElementById('cart-rows');
+  let total = 0;
+  rows.innerHTML = items.map(m => {
+    const sub = m.price * cart[m.id];
+    total += sub;
+    return `<div class="cart-row"><span>${m.emoji} ${m.name} ×${cart[m.id]}</span><span style="color:var(--orange);font-weight:700">${sub.toLocaleString()} F</span></div>`;
+  }).join('');
+  document.getElementById('cart-total').innerHTML = `Total <span>${total.toLocaleString()} FCFA</span>`;
+}
+function placeOrder() {
+  cart = {};
+  document.getElementById('client-menu').style.display = 'none';
+  document.getElementById('client-tracking').style.display = 'block';
+  let prog = 0;
+  renderTracking(prog);
+  const iv = setInterval(() => {
+    prog++;
+    renderTracking(prog);
+    if (prog === 2) document.getElementById('livreur-info').style.display = 'block';
+    if (prog >= 3) { clearInterval(iv); showToast('🎉 Commande livrée ! Bon appétit !'); }
+  }, 2000);
+}
+function renderTracking(prog) {
+  const steps = [
+    { icon:'✅', label:'Commande reçue' },
+    { icon:'🍳', label:'En préparation' },
+    { icon:'🏍️', label:'Livreur en route' },
+    { icon:'🎉', label:'Livré !' },
+  ];
+  const el = document.getElementById('track-steps');
+  el.innerHTML = steps.map((s, i) => {
+    const done = i <= prog;
+    const current = i === prog;
+    return `<div style="display:flex;align-items:center;gap:14px">
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div style="width:36px;height:36px;border-radius:50%;background:${done?'var(--orange)':'var(--card2)'};border:2px solid ${done?'var(--orange)':'var(--border)'};display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .5s">${done?s.icon:'○'}</div>
+        ${i<3?`<div style="width:2px;height:22px;background:${i<prog?'var(--orange)':'var(--border)'};transition:background .5s"></div>`:''}
+      </div>
+      <div style="opacity:${done?1:.4};transition:opacity .5s">
+        <div style="font-weight:${current?700:400}">${s.label}</div>
+        ${current&&i<3?`<div style="font-size:11px;color:var(--orange)">En cours...</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── RESTAURANT DEMO ──
+const orderStatuses = {};
+function acceptOrder(id) {
+  const badge = document.getElementById('status-' + id);
+  const actions = document.getElementById('actions-' + id);
+  badge.className = 'badge badge-orange';
+  badge.textContent = '🍳 En préparation';
+  actions.innerHTML = `<button class="btn-accept" style="background:var(--green);color:#fff;flex:1" onclick="callLivreur('${id}')">📞 Appeler un livreur</button>`;
+  showToast('✅ Commande #' + id + ' acceptée !');
+}
+function callLivreur(id) {
+  const badge = document.getElementById('status-' + id);
+  const actions = document.getElementById('actions-' + id);
+  badge.className = 'badge badge-green';
+  badge.textContent = '🏍️ Livreur en route';
+  actions.innerHTML = `<div style="color:var(--green);font-weight:700;padding:10px 0">✅ Jean-Paul est en route !</div>`;
+  showToast('🏍️ Livreur appelé et en route !');
+}
+function declineOrder(id) {
+  document.getElementById('ord-' + id).style.opacity = '0.4';
+  document.getElementById('ord-' + id).style.pointerEvents = 'none';
+  document.getElementById('status-' + id).className = 'badge';
+  document.getElementById('status-' + id).style.background = '#ff3d3d22';
+  document.getElementById('status-' + id).style.color = 'var(--red)';
+  document.getElementById('status-' + id).textContent = '✗ Refusée';
+  showToast('❌ Commande refusée');
+}
+
+// ── LIVREUR DEMO ──
+let missionStep = 0;
+let isOnline = true;
+const mSteps = [
+  { icon:'🏍️', label:'En route vers le restaurant', btn:'Je suis arrivé au restaurant', color:'var(--orange)' },
+  { icon:'📦', label:'Prise du colis au restaurant', btn:'Colis pris — je pars livrer', color:'var(--yellow)' },
+  { icon:'🚀', label:'En route vers le client', btn:'✅ Livraison effectuée !', color:'var(--green)' },
+];
+function nextMissionStep() {
+  if (missionStep < 2) {
+    missionStep++;
+    const s = mSteps[missionStep];
+    document.getElementById('m-icon').textContent = s.icon;
+    document.getElementById('m-label').textContent = s.label;
+    document.getElementById('m-btn').textContent = s.btn;
+    document.getElementById('m-btn').style.background = s.color;
+  } else {
+    // Done
+    const gains = parseInt(document.getElementById('lv-gains').textContent.replace(/\s/g,'')) + 500;
+    const courses = parseInt(document.getElementById('lv-courses').textContent) + 1;
+    document.getElementById('lv-gains').textContent = gains.toLocaleString();
+    document.getElementById('lv-courses').textContent = courses;
+    document.getElementById('mission-box').innerHTML = `<div style="text-align:center;padding:20px">
+      <div style="font-size:48px;margin-bottom:10px">✅</div>
+      <div style="font-weight:800;font-size:18px;margin-bottom:6px">Livraison terminée !</div>
+      <div style="color:var(--green);font-family:'Bebas Neue',sans-serif;font-size:36px">+500 FCFA</div>
+      <div style="color:var(--muted);font-size:12px;margin-top:4px">Crédité via Orange Money</div>
+      <button onclick="resetMission()" style="margin-top:16px;padding:12px 28px;border-radius:10px;border:none;background:var(--orange);color:#fff;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif">Attendre une mission</button>
+    </div>`;
+    showToast('💸 +500 FCFA crédités sur Orange Money !');
+    missionStep = 0;
+  }
+}
+function resetMission() {
+  missionStep = 0;
+  document.getElementById('mission-box').innerHTML = `
+    <div class="mission-header">
+      <div class="mission-step" id="m-icon">🏍️</div>
+      <div class="mission-info">
+        <div class="mission-label" id="m-label">En route vers le restaurant</div>
+        <div class="mission-sub">Mission #002 · Pizza Yaoundé</div>
+      </div>
+    </div>
+    <div class="route-box">
+      <div class="route-row"><div class="label">🍽️ RESTAURANT</div>Pizza Yaoundé — Melen</div>
+      <div style="border-top:1px solid var(--border);margin:8px 0"></div>
+      <div class="route-row"><div class="label">👤 CLIENT</div>Sonia B. — Omnisports</div>
+    </div>
+    <div class="gain-row">
+      <div><div style="font-size:11px;color:var(--muted)">Votre gain</div><div class="gain-amount" id="m-gain">500 FCFA</div></div>
+      <div style="text-align:right"><div style="font-size:11px;color:var(--muted)">Distance</div><div style="font-weight:700;font-size:20px">2.1 km</div></div>
+    </div>
+    <button class="action-btn" id="m-btn" onclick="nextMissionStep()" style="background:var(--orange);color:#fff">Je suis arrivé au restaurant</button>`;
+}
+function toggleOnline() {
+  isOnline = !isOnline;
+  const btn = document.getElementById('toggle-online');
+  if (isOnline) {
+    btn.style.background = 'var(--green)22';
+    btn.style.borderColor = 'var(--green)';
+    btn.style.color = 'var(--green)';
+    btn.textContent = '● En ligne';
+  } else {
+    btn.style.background = '#33333322';
+    btn.style.borderColor = '#444';
+    btn.style.color = 'var(--muted)';
+    btn.textContent = '○ Hors ligne';
+    showToast('😴 Vous êtes maintenant hors ligne');
+  }
+}
+</script>
+
+</body>
+</html>
